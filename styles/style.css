@@ -12,8 +12,7 @@ html {
 .page {
   display: flex;
   justify-content: center;
-  justify-self: center;
-  height: 100vh;
+  align-content: center;
   margin: auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
@@ -44,9 +43,19 @@ ol {
 .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
   gap: 30px;
-  margin-top: 273px;
-  margin-left: 30px;
+  inline-size: 1140px;
+}
+
+h2.error__title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 33px;
+  text-align: center;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
 }
 
 .result {
@@ -54,25 +63,27 @@ ol {
   grid-template-rows: 1fr 1fr;
   align-items: center;
   height: 534px;
-  padding-top: 60px;
+  padding-top: 79px;
 }
 
 .result__video-container{
   position: relative;
   width: 711px;
+  height: 386px;
 }
 
 .result__video {
   width: 100%;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .search-form {
   display: grid;
   grid-template-columns: 225px 212px 194px;
   gap: 40px;
-  height: 54px;
-  margin-top: 13px;
+  margin-top: 16px;
 }
 
 .visually-hidden {
@@ -104,6 +115,7 @@ ol {
 .search-form__label:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
+  cursor: pointer;
 }
 
 .search-form__label:focus-within {
@@ -135,6 +147,7 @@ ol {
   text-decoration-skip-ink: none;
   text-underline-position: from-font;
   background-color: transparent;
+  appearance: none;
 }
 
 .search-form__textfield:active {
@@ -142,13 +155,13 @@ ol {
   border-radius: 0;
 }
 
-.search-form__textfield:focus {
-  outline: 1px solid #ffffff;
-  outline-offset: 1px;
+.search-form__textfield:focus,
+.search-form__textfield:focus-visible {
+  outline: none;
 }
 
 .search-form__pseudo-checkbox {
-  display: inline-block;
+  display: flex;
   width: 19px;
   height: 19px;
   margin-right: 5px;
@@ -156,21 +169,18 @@ ol {
   padding: 1px;
 }
 
-.search-form__pseudo-checkbox:active {
-  background-image: url("../img/square.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-input[type='checkbox']:checked + span {
-  background-image: url("../img/square.svg");
-  background-repeat: no-repeat;
-  background-position: center;
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after,
+.search-form__checkbox:active + .search-form__pseudo-checkbox::after
+{
+  content: "";
+  margin: auto;
+  background-color: white;
+  inline-size: 15px;
+  block-size: 15px;
 }
 
 .button {
   height: 34px;
-  margin-top: 20px;
   border: 1px solid #ffffff;
   color: #ffffff;
   font-weight: 700;
@@ -188,8 +198,12 @@ input[type='checkbox']:checked + span {
 }
 
 .button:focus {
-  outline: 1px solid #ffffff;
-  outline-offset: 1px;
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid white;
+  outline-offset: -3px;
 }
 
 .button:active {
@@ -198,15 +212,16 @@ input[type='checkbox']:checked + span {
 
 .search-form__submit-button {
   width: 194px;
+  margin-top: 20px;
 }
 
 .more-button {
-  width: 99%;
-  margin-bottom: 3px;
-  margin-left: 2px;
+width: 399px;
+  margin-top: 30px;
 }
 
-.title {
+.title,
+.content__accent {
   color: #fff;
   font-family: "Oswald", sans-serif;
   font-weight: 700;
@@ -218,18 +233,17 @@ input[type='checkbox']:checked + span {
 .content__details {
   display: grid;
   grid-template-rows: 1fr auto;
-  gap: 30px;
-  width: 400px;
-  height: 534px;
+  gap: 26px;
 }
 
-.title .content__accent {
+.content__accent {
   color: #545050;
 }
 
 .content__list {
   position: relative;
-  height: 100%;
+  width: 420px;
+  height: 297px;
   overflow: auto;
 }
 
@@ -257,6 +271,10 @@ input[type='checkbox']:checked + span {
   background-color: #545050;
 }
 
+.content__card-link_current .content__video-card-description-container {
+  background-color: #545050;
+}
+
 .content__video-card-description-container {
   padding-top: 4px;
   padding-left: 4px;
@@ -275,11 +293,14 @@ input[type='checkbox']:checked + span {
 
 .content__video-card-title {
   margin-bottom: 7px;
+  overflow: hidden;
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   line-height: 30px;
   text-transform: uppercase;
+  text-overflow: ellipsis;
   size: 30px;
+  white-space: nowrap;
 }
 
 .content__video-card-description {
@@ -294,9 +315,6 @@ input[type='checkbox']:checked + span {
 .content__video-card-thumbnail {
   width: 194px;
   height: 103px;
-}
-
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  object-fit: cover;
+  object-position: center;
 }
