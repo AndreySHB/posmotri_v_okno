@@ -242,9 +242,9 @@ width: 399px;
 
 .content__list {
   position: relative;
-  overflow: auto;
-  height: 297px;
   width: 420px;
+  height: 297px;
+  overflow: auto;
 }
 
 .content__card-link{
