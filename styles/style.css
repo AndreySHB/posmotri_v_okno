@@ -250,9 +250,9 @@ width: 399px;
 
 .content__card-link {
   display: block;
+  width: 398px;
   color: #ffffff;
   text-decoration: none;
-  width: 398px;
 }
 
 .content__card-link:hover .content__video-card-title{
@@ -298,6 +298,7 @@ width: 399px;
 
 .content__video-card-title {
   margin-bottom: 7px;
+  overflow: hidden;
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   line-height: 30px;
